@@ -1,1 +1,48 @@
 
+from string import Template as tp
+from datetime import date
+
+class Expense:
+    CATEGORIES = ['Food', 'Gifts', 'House', 'Clothes', 'Health', 'Pets']
+    def __init__(self,category,amount):
+        if category in Expense.CATEGORIES:
+            self.Category = category
+        else:
+            temp = tp('${category} is not a valid category. Here are the available categories supported at the time: ${available_categories}')
+            raise ValueError(temp.substitute(category=category,available_categories=Expense.GetCategories()))
+        self.Amount = amount
+        self.Date = date.today()
+
+    @classmethod
+    def GetCategories(cls):
+        return cls.CATEGORIES
+
+
+category_ans = None
+print('When you want to stop type: \"Stop\"')
+while True:
+    print('Do you want to enter an income(I) or an expense(E)?')
+    ans = input()
+    if ans == 'Stop':
+        break
+    if ans == 'E':
+        print('What category? If you want to see the available categories, type: AC')
+        ans2 = input()
+        if ans2 == 'Stop':
+            break
+        if ans2 == 'AC':
+            print("Available categories at the time:{}".format(Expense.GetCategories()))
+        else:
+            category_ans = ans2
+        if category_ans == None:
+            category_ans = input()
+            if category_ans == 'Stop':
+                break
+
+        print('What amount?')
+        amount_ans = int(input())
+        if amount_ans == 'Stop':
+            break
+
+        exp = Expense(category_ans,amount_ans)
+        print(exp.Category,exp.Date)

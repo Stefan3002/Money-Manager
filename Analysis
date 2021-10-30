@@ -1,0 +1,13 @@
+Functional requirements:
+--> The system must allow users to introduce expenses or incomes
+    --> The system must allow users to choose from different categories and after that, input details like: price,date,custom details.
+--> The system must allow users to see their curretn balance
+--> The systen must allow users to modify an older record
+--> The system must allow users to view all the records
+
+Non-functional requirments:
+--> The system should allow users to automatically choose the current date ( Functionality ).
+--> The system sould allow users to sort the records by amount, date, etc ( Functionality ).
+--> The system should feature a simplistic design ( Utility ).
+--> The system should be available 24/7 ( Reliability ).
+--> The system should display error messages if the user gets something wrong ( Serviceability ).
